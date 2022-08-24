@@ -14,6 +14,9 @@ spec:
     - name: apply
       image: image-registry.openshift-image-registry.svc:5000/openshift/cli:latest
       workingDir: /workspace/source
+      securityContext:
+        capabilities:
+          add: ["SETFCAP"]
       command: ["/bin/bash", "-c"]
       args:
         - |-
