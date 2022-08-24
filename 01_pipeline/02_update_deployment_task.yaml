@@ -14,6 +14,9 @@ spec:
     - name: patch
       image: image-registry.openshift-image-registry.svc:5000/openshift/cli:latest
       command: ["/bin/bash", "-c"]
+      securityContext:
+        capabilities:
+          add: ["SETFCAP"]
       args:
         - |-
           oc patch deployment $(inputs.params.deployment) --patch='{"spec":{"template":{"spec":{
